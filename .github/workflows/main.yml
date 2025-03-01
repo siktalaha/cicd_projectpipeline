@@ -7,8 +7,8 @@ on:
 jobs: 
   build: 
     runs-on: ubuntu-latest
-steps: 
-— uses: actions/checkout@v3 
+    steps: 
+    — uses: actions/checkout@v3 
 
-— name: “Deployed site” 
-  run: curl -X POST -d {} https://api.netlify.com/build_hooks/67c36f75d0c6a86aff2e8b4b
+    — name: “Deployed site” 
+    — run: curl -X POST -d {} https://api.netlify.com/build_hooks/67c36f75d0c6a86aff2e8b4b
