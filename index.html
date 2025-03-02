@@ -25,13 +25,13 @@
 
     <script>
         async function fetchQuote() {
-            const apiUrl = "https://api.quotable.io/random";
+            const apiUrl = "https://zenquotes.io/api/random";
             try {
                 const response = await fetch(apiUrl);
                 const data = await response.json();
                 
-                document.getElementById("quote-text").innerText = `"${data.content}"`;
-                document.getElementById("quote-author").innerText = `— ${data.author}`;
+                document.getElementById("quote-text").innerText = `"${data.q}"`;
+                document.getElementById("quote-author").innerText = `— ${data.a}`;
                 
                 document.getElementById("quote-box").style.display = "block";
             } catch (error) {
