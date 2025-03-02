@@ -26,11 +26,11 @@
     <script>
         async function fetchQuote() {
             const proxy = "https://cors-anywhere.herokuapp.com/";
-            const apiUrl = "https://zenquotes.io/api/random";
+            const apiUrl = "zenquotes.io/api/random";
             try {
                 const response = await fetch(proxy + apiUrl);
                 const data = await response.json();
-                
+                console.log(data)
                 document.getElementById("quote-text").innerText = `"${data.q}"`;
                 document.getElementById("quote-author").innerText = `— ${data.a}`;
                 
