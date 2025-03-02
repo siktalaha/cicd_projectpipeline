@@ -5,6 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Microservices link</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; margin: 20px; }
+        .quote-box { display: none; margin-top: 20px; padding: 15px; border: 1px solid #ddd; border-radius: 5px; max-width: 400px; margin-left: auto; margin-right: auto; }
+    </style>
 </head>
 
 <body>
@@ -12,17 +16,29 @@
         Sample microservices
     </h1>
 
-    <ul>
-        <li><a href="https://randomuser.me/api/" target="_blank">Get Random User</a></li>
-        <li><a href="https://v2.jokeapi.dev/joke/Programming?type=single" target="_blank">Get Programming Joke</a></li>
-        <li><a href="https://alexwohlbruck.github.io/cat-facts/" target="_blank">Get a Random Cat Fact</a></li>
-        <li><a href="https://api.coingecko.com/api/v3/coins/bitcoin" target="_blank">Get Bitcoin Data</a></li>
-        <li><a href="https://quote-garden.herokuapp.com/api/v3/quotes/random" target="_blank">Get a Random Quote</a>
-        </li>
-        <li><a href="https://www.boredapi.com/api/activity/" target="_blank">Get a Random Activity</a></li>
-        <li><a href="https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY" target="_blank">Get Astronomy Picture of the
-                Day</a></li>
-    </ul>
+    <button onclick="fetchQuote()">Get Quote</button>
+
+    <div id="quote-box" class="quote-box">
+        <blockquote id="quote-text"></blockquote>
+        <p id="quote-author"></p>
+    </div>
+
+    <script>
+        async function fetchQuote() {
+            const apiUrl = "https://api.quotable.io/random";
+            try {
+                const response = await fetch(apiUrl);
+                const data = await response.json();
+                
+                document.getElementById("quote-text").innerText = `"${data.content}"`;
+                document.getElementById("quote-author").innerText = `— ${data.author}`;
+                
+                document.getElementById("quote-box").style.display = "block";
+            } catch (error) {
+                console.error("Error fetching quote:", error);
+            }
+        }
+    </script>
 </body>
 
 </html>
